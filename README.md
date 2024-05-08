@@ -7,3 +7,5 @@ Running the script with "--write all" will create .desktop files for all listed 
 "--write <package_name>" will write the .desktop file for that specific package
 
 "--exclude <package_name>" will build an exclusion list and can accept multiple packages seperated by commas. 
+
+Install via the command line using "pip install git+https://github.com/derungo/sdesk.git"
