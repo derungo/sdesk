@@ -1,15 +1,58 @@
-A simple utility to create .desktop files for snap packages.
+SDESK
 
-Currently, running sdesk with no args will give you a list of snap packages without corresponding .desktop files in your usr/share/applications directory.
+sdesk is a utility designed to manage and generate .desktop files for Snap packages. It simplifies accessing Snap applications directly from desktop environments by ensuring they have corresponding .desktop files in the /usr/share/applications directory.
 
-Running "sudo sdesk --write all" will create .desktop files for all listed packages.
+Features:
+List Missing .desktop Files: Automatically lists Snap packages that lack .desktop files.
+Create .desktop Files: Facilitates the creation of .desktop files:
+sudo sdesk --write all — Creates files for all listed packages.
+sudo sdesk --write <package_name> — Targets a specific package for .desktop file creation.
+Exclusion List: Allows specifying packages to exclude from processing, useful for packages that do not need a .desktop file or are system utilities.
+Installation
+Prerequisites
+Ensure that Python and pip are installed on your system. sdesk works on Linux distributions that support Snap packages.
 
-"sudo sdesk --write package_name" will write the .desktop file for that specific package
+Install sdesk:
+To install sdesk, use the following pip command:
 
-"sdesk --exclude package_name" will build an exclusion list and can accept multiple packages seperated by commas. 
+pip install git+https://github.com/derungo/sdesk.git
 
-Install via the command line using "pip install git+https://github.com/derungo/sdesk.git"
+Post-Installation Configuration:
+Update PATH:
+Ensure that /home/username/.local/bin is in your PATH. Add it by running:
 
-If not already you will need to add /home/username/.local/bin to PATH
+echo "export PATH=\"$HOME/.local/bin:\$PATH\"" >> ~/.bashrc
+source ~/.bashrc
 
-Script requires sudo to write files to the /usr/share/applications directory, so you will need to add /home/username/.local/bin to the secure_path variable in the "sudoers" file
+Configure sudoers for Secure Execution:
+To allow sudo access to sdesk, add /home/username/.local/bin to the secure_path in your sudoers file:
+
+sudo visudo
+
+And modify the secure_path setting as follows:
+
+Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/username/.local/bin"
+
+Usage:
+List Missing .desktop Files:
+
+sdesk
+
+Create .desktop Files for All Listed Packages:
+
+sudo sdesk --write all
+
+Create a .desktop File for a Specific Package:
+
+
+sudo sdesk --write <package_name>
+
+Exclude Specific Packages:
+
+sdesk --exclude package1,package2
+
+Contributing:
+Contributions are welcome! If you have suggestions or improvements, please fork the repository and submit a pull request. You can also open issues if you encounter bugs or have feature requests.
+
+License:
+sdesk is made available under the MIT License. For more details, see the LICENSE file in the repository.
