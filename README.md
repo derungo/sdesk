@@ -4,10 +4,15 @@ sdesk is a utility designed to manage and generate .desktop files for Snap packa
 
 Features:
 List Missing .desktop Files: Automatically lists Snap packages that lack .desktop files.
+
 Create .desktop Files: Facilitates the creation of .desktop files:
+
 sudo sdesk --write all — Creates files for all listed packages.
+
 sudo sdesk --write <package_name> — Targets a specific package for .desktop file creation.
+
 Exclusion List: Allows specifying packages to exclude from processing, useful for packages that do not need a .desktop file or are system utilities.
+
 Installation
 Prerequisites
 Ensure that Python and pip are installed on your system. sdesk works on Linux distributions that support Snap packages.
