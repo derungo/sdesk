@@ -24,7 +24,7 @@ Ensure that Python and pip are installed on your system. SDESK works on Linux di
 
 To install SDESK, use the following pip command:
 
-~~~bash
+~~~
 pip install git+https://github.com/derungo/sdesk.git
 ~~~
 Post-Installation Configuration:
@@ -32,7 +32,7 @@ Post-Installation Configuration:
 Update PATH:
 
 Ensure that `/home/username/.local/bin` is in your PATH. Add it by running:
-~~~bash
+~~~
 echo "export PATH=\"$HOME/.local/bin:\$PATH\"" >> ~/.bashrc
 source ~/.bashrc
 ~~~
@@ -77,28 +77,4 @@ SDESK is made available under the MIT License. For more details, see the LICENSE
 
 ## Badges  
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)  
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://choosealicense.com/licenses/gpl-3.0/)  
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](https://choosealicense.com/licenses/gpl-3.0/)  
 
-## Demo  
-Insert gif or link to demo  
-
-## Features  
-- Accessibility in VS Code  
-- Download directly to project root  
-- Live Previews    
-
-## Tech Stack  
-**Client:** TypeScript, React, Next.js  
-
-**Server:** Node, Express, GraphQL  
-
-# Project Title  
-A brief description of what this project does and who it's for  
-
-## Usage/Examples  
-~~~javascript  
-  import Component from 'my-project'
-
-  console.log("Hello World")
-~~~  
