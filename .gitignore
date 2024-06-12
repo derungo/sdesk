@@ -128,3 +128,6 @@ sdesk.egg-info/
 # Build directories
 build/
 dist/
+
+
+sdesk/__pycache__/*
