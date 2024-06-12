@@ -1,0 +1,2 @@
+[console_scripts]
+sdesk = sdesk.main:main

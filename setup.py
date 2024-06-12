@@ -2,14 +2,14 @@ from setuptools import setup, find_packages
 
 setup(
     name='sdesk',
-    version='0.1.0',
+    version='0.1.1',
     packages=find_packages(),
     entry_points={
         'console_scripts': [
             'sdesk = sdesk.main:main', 
         ],
     },
-    author='Your Name',
+    author='KinDev',
     author_email='patrick.aiken@gmail.com',
     description='A utility to manage Snap desktop files.',
     long_description=open('README.md').read(),

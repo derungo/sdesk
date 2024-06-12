@@ -1,3 +1,17 @@
+Metadata-Version: 2.1
+Name: sdesk
+Version: 0.1.1
+Summary: A utility to manage Snap desktop files.
+Home-page: https://github.com/yourusername/sdesk
+Author: KinDev
+Author-email: patrick.aiken@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # SDESK
 
 ## Table of Contents
@@ -5,9 +19,7 @@
 - [About](#about)
 - [Getting Started](#getting_started)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Badges](#badges)
+- [Contributing](../CONTRIBUTING.md)
 
 ## About <a name = "about"></a>
 
@@ -15,11 +27,12 @@ SDESK is a utility designed to manage and generate .desktop files for Snap packa
 
 ## Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Prerequisites
 
 Ensure that Python and pip are installed on your system. SDESK works on Linux distributions that support Snap packages.
+
 
 ### Installing
 
@@ -28,7 +41,6 @@ To install SDESK, use the following pip command:
 ~~~
 pip install git+https://github.com/derungo/sdesk.git
 ~~~
-
 Post-Installation Configuration:
 
 Update PATH:
@@ -51,6 +63,8 @@ Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin
 
 ## Usage <a name = "usage"></a>
 
+Add notes about how to use the system.
+
 List Missing .desktop Files:
 ~~~
 sdesk
@@ -67,38 +81,14 @@ Exclude Specific Packages:
 ~~~
 sdesk --exclude package1,package2
 ~~~
-Check the Version:
-~~~
-sdesk --version
-~~~
-Dry Run (Show what would be done without making any changes):
-~~~
-sdesk --dry-run --write all
-~~~
-Backup Current .desktop Files:
-~~~
-sdesk --backup
-~~~
-Restore .desktop Files from Backup:
-~~~
-sdesk --restore
-~~~
-Interactive Mode to Manage Exclusion List:
-~~~
-sdesk --interactive
-~~~
-Enable Verbose Output:
-~~~
-sdesk --verbose
-~~~
-
-## Contributing <a name = "contributing"></a>
+## Contributing
 
 Contributions are welcome! If you have suggestions or improvements, please fork the repository and submit a pull request. You can also open issues if you encounter bugs or have feature requests.
 
-## License <a name = "license"></a>
+## License
 
 SDESK is made available under the MIT License. For more details, see the LICENSE file in the repository.
 
-## Badges <a name = "badges"></a>  
+## Badges  
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)  
+
