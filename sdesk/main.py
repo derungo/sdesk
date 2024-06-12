@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import subprocess
 import os
 import argparse
@@ -7,45 +5,22 @@ import argparse
 EXCLUDE_FILE = "exclusion_list.txt"
 
 def get_exclusion_set():
-    """
-    Get the set of excluded packages from the exclusion list file.
-
-    Returns:
-        set: The set of excluded packages.
-    """
     try:
         with open(EXCLUDE_FILE, 'r') as file:
             excluded = {line.strip() for line in file if line.strip()}
         print(f"Exclusion list read: {excluded}")  # Debugging print statement
-        
     except FileNotFoundError:
         excluded = set()
         print("Exclusion file not found, starting with an empty set.")  # Debugging print statement
-    
     return excluded
 
 def update_exclusion_list(packages):
-    """
-    Update the exclusion list file with the given packages.
-
-    Args:
-        packages (list): The list of packages to be excluded.
-    """
     with open(EXCLUDE_FILE, 'w') as file:
         file.writelines(f"{pkg}\n" for pkg in packages)
     print(f"Updated exclusion list written: {packages}")  # Debugging print statement
 
-
 def list_snap_packages(exclude_set):
-    """
-    List all Snap packages, excluding the ones in the exclusion set.
-
-    Args:
-        exclude_set (set): The set of packages to be excluded.
-
-    Returns:
-        list: The list of Snap packages.
-    """
+    print("Running snap list...")  # Debugging print statement
     result = subprocess.run(['snap', 'list'], stdout=subprocess.PIPE, text=True)
     print(f"'snap list' output: {result.stdout}")  # Debugging print statement
 
@@ -56,39 +31,18 @@ def list_snap_packages(exclude_set):
     return filtered_packages
 
 def check_desktop_files(package_name):
-    """
-    Check if the .desktop file exists for the given package.
-
-    Args:
-        package_name (str): The name of the package.
-
-    Returns:
-        bool: True if the .desktop file exists, False otherwise.
-    """
     desktop_path = f"/usr/share/applications/{package_name}.desktop"
     exists = os.path.exists(desktop_path)
     print(f"Checking desktop file for {package_name}: {exists}")  # Debugging print statement
     return exists
 
 def create_desktop_file(package_name):
-    """
-    Create a .desktop file for the given package.
-
-    Args:
-        package_name (str): The name of the package.
-    """
     desktop_path = f"/usr/share/applications/{package_name}.desktop"
     with open(desktop_path, 'w') as f:
         f.write(f"[Desktop Entry]\nType=Application\nName={package_name}\nExec=snap run {package_name}\nIcon={package_name}\n")
     print(f"Created .desktop file for {package_name}")
 
 def parse_args():
-    """
-    Parse the command line arguments.
-
-    Returns:
-        argparse.Namespace: The parsed arguments.
-    """
     parser = argparse.ArgumentParser(description="Manage .desktop files for Snap packages.")
     parser.add_argument("--write", nargs='?', const='all', default=None,
                         help="Write .desktop files. Optionally specify a specific package name, or 'all' for all missing files.")
@@ -97,15 +51,11 @@ def parse_args():
     return parser.parse_args()
 
 def main():
-    """
-    The main function of the script.
-    """
     print("Starting main function")  # Debugging print statement
 
     args = parse_args()
     excluded_packages = get_exclusion_set()
     print(f"Excluded packages: {excluded_packages}")  # Debugging print statement
-
 
     if args.exclude:
         new_exclusions = set(args.exclude.split(','))
@@ -115,13 +65,10 @@ def main():
         return
 
     packages = list_snap_packages(excluded_packages)
-
     print(f"Snap packages: {packages}")  # Debugging print statement
 
     missing_desktop_files = [pkg for pkg in packages if not check_desktop_files(pkg)]
-
     print(f"Missing .desktop files: {missing_desktop_files}")  # Debugging print statement
-
 
     if args.write is None:
         if missing_desktop_files:
@@ -137,7 +84,6 @@ def main():
         create_desktop_file(args.write)
     else:
         print(f"No action needed or invalid package specified for --write: {args.write}")
-
 
 if __name__ == "__main__":
     main()
