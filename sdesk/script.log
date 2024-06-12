@@ -1,0 +1,33 @@
+2024-06-11 21:44:14,615 - INFO - Starting main function
+2024-06-11 21:44:14,619 - WARNING - Exclusion file not found, starting with an empty set.
+2024-06-11 21:44:14,619 - DEBUG - Excluded packages: set()
+2024-06-11 21:44:14,619 - INFO - Running snap list...
+2024-06-11 21:44:15,233 - DEBUG - 'snap list' output: Name               Version                Rev    Tracking       Publisher       Notes
+android-studio     2023.3.1.19-Jellyfish  157    latest/stable  snapcrafters*   classic
+bare               1.0                    5      latest/stable  canonical**     base
+core18             20240416               2823   latest/stable  canonical**     base
+core20             20240416               2318   latest/stable  canonical**     base
+core22             20240408               1380   latest/stable  canonical**     base
+docker             24.0.5                 2915   latest/stable  canonical**     -
+dotnet-sdk         8.0.300                245    latest/stable  canonical**     classic
+flutter            0+git.2149a81          145    latest/stable  flutter-team**  classic
+gh                 2.6.0-15-g1a10fd5a     502    latest/stable  casper-dcl      -
+gnome-3-38-2004    0+git.efb213a          143    latest/stable  canonical**     -
+gtk-common-themes  0.1-81-g442e511        1535   latest/stable  canonical**     -
+snapd              2.63                   21759  latest/stable  canonical**     snapd
+
+2024-06-11 21:44:15,233 - INFO - Filtered packages: ['android-studio', 'bare', 'core18', 'core20', 'core22', 'docker', 'dotnet-sdk', 'flutter', 'gh', 'gnome-3-38-2004', 'gtk-common-themes', 'snapd']
+2024-06-11 21:44:15,233 - DEBUG - Snap packages: ['android-studio', 'bare', 'core18', 'core20', 'core22', 'docker', 'dotnet-sdk', 'flutter', 'gh', 'gnome-3-38-2004', 'gtk-common-themes', 'snapd']
+2024-06-11 21:44:15,233 - DEBUG - Checking desktop file for android-studio: True
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for bare: False
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for core18: False
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for core20: False
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for core22: False
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for docker: False
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for dotnet-sdk: False
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for flutter: True
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for gh: False
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for gnome-3-38-2004: False
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for gtk-common-themes: False
+2024-06-11 21:44:15,234 - DEBUG - Checking desktop file for snapd: False
+2024-06-11 21:44:15,234 - DEBUG - Missing .desktop files: ['bare', 'core18', 'core20', 'core22', 'docker', 'dotnet-sdk', 'gh', 'gnome-3-38-2004', 'gtk-common-themes', 'snapd']
