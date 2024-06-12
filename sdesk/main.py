@@ -16,8 +16,12 @@ def get_exclusion_set():
     try:
         with open(EXCLUDE_FILE, 'r') as file:
             excluded = {line.strip() for line in file if line.strip()}
+        print(f"Exclusion list read: {excluded}")  # Debugging print statement
+        
     except FileNotFoundError:
         excluded = set()
+        print("Exclusion file not found, starting with an empty set.")  # Debugging print statement
+    
     return excluded
 
 def update_exclusion_list(packages):
@@ -29,6 +33,8 @@ def update_exclusion_list(packages):
     """
     with open(EXCLUDE_FILE, 'w') as file:
         file.writelines(f"{pkg}\n" for pkg in packages)
+    print(f"Updated exclusion list written: {packages}")  # Debugging print statement
+
 
 def list_snap_packages(exclude_set):
     """
@@ -41,8 +47,12 @@ def list_snap_packages(exclude_set):
         list: The list of Snap packages.
     """
     result = subprocess.run(['snap', 'list'], stdout=subprocess.PIPE, text=True)
+    print(f"'snap list' output: {result.stdout}")  # Debugging print statement
+
     packages = [line.split()[0] for line in result.stdout.split('\n')[1:] if line]
     filtered_packages = [pkg for pkg in packages if pkg not in exclude_set]
+    print(f"Filtered packages: {filtered_packages}")  # Debugging print statement
+
     return filtered_packages
 
 def check_desktop_files(package_name):
@@ -56,7 +66,9 @@ def check_desktop_files(package_name):
         bool: True if the .desktop file exists, False otherwise.
     """
     desktop_path = f"/usr/share/applications/{package_name}.desktop"
-    return os.path.exists(desktop_path)
+    exists = os.path.exists(desktop_path)
+    print(f"Checking desktop file for {package_name}: {exists}")  # Debugging print statement
+    return exists
 
 def create_desktop_file(package_name):
     """
@@ -88,8 +100,12 @@ def main():
     """
     The main function of the script.
     """
+    print("Starting main function")  # Debugging print statement
+
     args = parse_args()
     excluded_packages = get_exclusion_set()
+    print(f"Excluded packages: {excluded_packages}")  # Debugging print statement
+
 
     if args.exclude:
         new_exclusions = set(args.exclude.split(','))
@@ -99,7 +115,13 @@ def main():
         return
 
     packages = list_snap_packages(excluded_packages)
+
+    print(f"Snap packages: {packages}")  # Debugging print statement
+
     missing_desktop_files = [pkg for pkg in packages if not check_desktop_files(pkg)]
+
+    print(f"Missing .desktop files: {missing_desktop_files}")  # Debugging print statement
+
 
     if args.write is None:
         if missing_desktop_files:
